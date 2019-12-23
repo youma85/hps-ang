@@ -1,1 +1,20 @@
-<app-todo-item></app-todo-item>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Todo</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <a
+        href="#"
+        class="list-group-item clearfix"
+        *ngFor="let todo of todos">
+            <div class="pull-left">
+                <h4 class="list-group-item-heading">{{ todo.task }}</h4>
+                <p class="list-group-item-text">{{ todo.description }}</p>
+            </div>
+        </a>
+        <app-todo-item></app-todo-item>
+    </div>
+</div>
