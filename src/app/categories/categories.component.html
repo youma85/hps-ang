@@ -2,7 +2,15 @@
     <div class="col-xs-10">
         <app-catorgory-edit></app-catorgory-edit>
         <hr>
-        <p>The list</p>
+        <ul class="list-group">
+            <a
+                class="list-group-item"
+                style="cursor: pointer"
+                *ngFor="let categ of categories"
+            >
+                {{ categ.name }}:{{ categ.description }}
+            </a>
+        </ul>
     </div>
 </div>
   
