@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo.model';
 import { Category } from 'src/app/categories/category.model';
 
@@ -9,7 +9,9 @@ import { Category } from 'src/app/categories/category.model';
 })
 export class TodosListComponent implements OnInit {
   todo = new Todo();
-  indCateg:number;
+  indCateg: number;
+  @Output() todoWasSelected = new EventEmitter<Todo>();
+
   categories: Category [] = [
     new Category(1, 'Personal', 'Personal category'),
     new Category(2, 'Professional', 'Professional category'),
@@ -21,19 +23,20 @@ export class TodosListComponent implements OnInit {
     new Todo('Learn Java', 'Learn Java', 'Completed', this.categories[1]),
   ];
 
-  
-
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
-  onAddTodo(){
-    console.log(this.todo);  
-    this.todo.category=this.categories[this.indCateg];
+  onAddTodo() {
+    console.log(this.todo);
+    this.todo.category = this.categories[this.indCateg];
     this.todos.push(this.todo);
-    this.todo=new Todo();
+    this.todo = new Todo();
   }
 
+  onTodoSelected(todo: Todo) {
+    this.todoWasSelected.emit(todo);
+  }
 }

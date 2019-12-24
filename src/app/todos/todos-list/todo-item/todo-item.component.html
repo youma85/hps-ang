@@ -1,10 +1,11 @@
 <a
-        href="#"
-        class="list-group-item clearfix"
-        >
-            <div class="pull-left">
-                <h4 class="list-group-item-heading">{{ todo.task }}</h4>
-                <p class="list-group-item-text">{{ todo.description }}</p>
-                <p class="list-group-item-text">{{ todo.category.name }}</p>
-            </div>
+    href="#"
+    class="list-group-item clearfix"
+    (click)="onSelected()"
+>
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ todo.task }}</h4>
+        <p class="list-group-item-text">{{ todo.description }}</p>
+        <p class="list-group-item-text">{{ todo.category.name }}</p>
+    </div>
 </a>
