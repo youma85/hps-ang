@@ -11,6 +11,7 @@ import { TodoItemComponent } from './todos/todos-list/todo-item/todo-item.compon
 import { CategoriesComponent } from './categories/categories.component';
 import { CatorgoryEditComponent } from './categories/catorgory-edit/catorgory-edit.component';
 import { DropDownDirective } from './shared/drop-down.directive';
+import { ShortenPipe } from './shared/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DropDownDirective } from './shared/drop-down.directive';
     TodoItemComponent,
     CategoriesComponent,
     CatorgoryEditComponent,
-    DropDownDirective
+    DropDownDirective,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
