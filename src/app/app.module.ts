@@ -10,6 +10,7 @@ import { TodosDetailComponent } from './todos/todos-detail/todos-detail.componen
 import { TodoItemComponent } from './todos/todos-list/todo-item/todo-item.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CatorgoryEditComponent } from './categories/catorgory-edit/catorgory-edit.component';
+import { DropDownDirective } from './shared/drop-down.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CatorgoryEditComponent } from './categories/catorgory-edit/catorgory-ed
     TodosDetailComponent,
     TodoItemComponent,
     CategoriesComponent,
-    CatorgoryEditComponent
+    CatorgoryEditComponent,
+    DropDownDirective
   ],
   imports: [
     BrowserModule,
