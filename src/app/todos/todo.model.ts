@@ -1,13 +1,15 @@
-import { stat } from 'fs';
+import { Category } from '../categories/category.model';
 
 export class Todo {
     public task: string;
     public description: string;
     public status: string;
+    public category: Category;
 
-    constructor(task: string, desc: string, status: string) {
+    constructor(task?: string, desc?: string, status?: string, category?: Category) {
         this.task = task;
         this.description = desc;
         this.status = status;
+        this.category = category;
     }
 }

@@ -8,8 +8,8 @@ import { Category } from './category.model';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category [] = [
-    new Category('Personal', 'Personal category'),
-    new Category('Professional', 'Professional category'),
+    new Category(1, 'Personal', 'Personal category'),
+    new Category(2, 'Professional', 'Professional category'),
   ];
   constructor() { }
 
