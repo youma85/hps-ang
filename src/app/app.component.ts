@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  page = 'todos';
-  onSelectPage(page: string) {
-    this.page = page;
-  }
+
 }

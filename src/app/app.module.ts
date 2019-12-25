@@ -12,6 +12,13 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CatorgoryEditComponent } from './categories/catorgory-edit/catorgory-edit.component';
 import { DropDownDirective } from './shared/drop-down.directive';
 import { ShortenPipe } from './shared/shorten.pipe';
+import {  Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: '', redirectTo: '/todos', pathMatch:'full' },
+  {path: 'todos', component: TodosComponent },
+  {path: 'categories', component: CategoriesComponent }
+];
 
 @NgModule({
   declarations: [
@@ -28,7 +35,8 @@ import { ShortenPipe } from './shared/shorten.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
