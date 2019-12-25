@@ -6,7 +6,9 @@
 <hr>
 <div class="row">
     <div class="col-xs-12">
-        <app-todo-item *ngFor="let todo of todos" [todo] = "todo"></app-todo-item>
+        <app-todo-item *ngFor="let todo of todos; let i=index" 
+            [todo] = "todo"
+            [index]="i"></app-todo-item>
     </div>
 </div>
 <hr>

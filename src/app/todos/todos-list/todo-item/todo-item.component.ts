@@ -10,6 +10,7 @@ import { TodoService } from '../../todo.service';
 export class TodoItemComponent implements OnInit {
 
   @Input() todo: Todo;
+  @Input() index: number;
 
   constructor(private todoService: TodoService) { }
 
