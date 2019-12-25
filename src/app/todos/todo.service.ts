@@ -1,9 +1,11 @@
 import { Todo } from './todo.model';
 import { CategoryService } from '../shared/category.service';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class TodoService {
+
+    todoSelected = new EventEmitter<Todo>();
     constructor(private categoryService: CategoryService) {}
 
     private todos: Todo[] = [

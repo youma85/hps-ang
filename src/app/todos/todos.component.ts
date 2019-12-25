@@ -11,9 +11,15 @@ import { TodoService } from './todo.service';
 export class TodosComponent implements OnInit {
 
   selectedTodo: Todo;
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
+    this.todoService.todoSelected
+      .subscribe(
+        (todo: Todo) => {
+          this.selectedTodo = todo;
+        }
+      );
   }
 
 }

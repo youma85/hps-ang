@@ -12,7 +12,6 @@ import { CategoryService } from 'src/app/shared/category.service';
 export class TodosListComponent implements OnInit {
   todo = new Todo();
   indCateg: number;
-  @Output() todoWasSelected = new EventEmitter<Todo>();
 
   todos: Todo[] = [];
 
@@ -29,7 +28,4 @@ export class TodosListComponent implements OnInit {
     this.todo = new Todo();
   }
 
-  onTodoSelected(todo: Todo) {
-    this.todoWasSelected.emit(todo);
-  }
 }
