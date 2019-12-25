@@ -8,9 +8,9 @@ export class TodoService {
     constructor(private categoryService: CategoryService) {}
 
     private todos: Todo[] = [
-        new Todo('Learn Angular', 'Must Learn angular In 4 days', 'In Progress', this.categoryService.getCategories()[0]),
-        new Todo('Learn Spring Cloud', 'Learn the spring cloud framework', 'Not Started', this.categoryService.getCategories()[1]),
-        new Todo('Learn Java', 'Learn Java', 'Completed', this.categoryService.getCategories()[1]),
+        new Todo('Learn Angular', 'Must Learn angular In 4 days', this.categoryService.getCategories()[0]),
+        new Todo('Learn Spring Cloud', 'Learn the spring cloud framework', this.categoryService.getCategories()[1]),
+        new Todo('Learn Java', 'Learn Java', this.categoryService.getCategories()[1]),
     ];
 
     getTodos() {
@@ -19,5 +19,9 @@ export class TodoService {
 
     getTodo(id: number): Todo {
         return this.todos[id];
+    }
+
+    addTodo(todo: Todo) {
+        this.todos.push(todo);
     }
 }

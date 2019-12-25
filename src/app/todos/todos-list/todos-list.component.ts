@@ -3,6 +3,7 @@ import { Todo } from '../todo.model';
 import { Category } from 'src/app/categories/category.model';
 import { TodoService } from '../todo.service';
 import { CategoryService } from 'src/app/shared/category.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todos-list',
@@ -15,7 +16,10 @@ export class TodosListComponent implements OnInit {
 
   todos: Todo[] = [];
 
-  constructor(private todoService: TodoService,private categorySerivce: CategoryService) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private todoService: TodoService,
+              private categorySerivce: CategoryService) { }
 
   ngOnInit() {
     this.todos = this.todoService.getTodos();
@@ -28,4 +32,7 @@ export class TodosListComponent implements OnInit {
     this.todo = new Todo();
   }
 
+  onNewClicked() {
+    this.router.navigate(['new'], { relativeTo: this.route});
+  }
 }

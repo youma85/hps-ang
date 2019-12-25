@@ -14,12 +14,15 @@ import { DropDownDirective } from './shared/drop-down.directive';
 import { ShortenPipe } from './shared/shorten.pipe';
 import {  Routes, RouterModule } from '@angular/router';
 import { TodoStartComponent } from './todos/todo-start/todo-start.component';
+import { TodoEditComponent } from './todos/todo-edit/todo-edit.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/todos', pathMatch: 'full' },
   {path: 'todos', component: TodosComponent, children: [
     {path: '', component: TodoStartComponent},
-    {path: ':id', component: TodosDetailComponent}
+    {path: 'new', component: TodoEditComponent},
+    {path: ':id', component: TodosDetailComponent},
+    {path: ':id/edit', component: TodoEditComponent}
   ]},
   {path: 'categories', component: CategoriesComponent }
 ];
@@ -36,7 +39,8 @@ const appRoutes: Routes = [
     CatorgoryEditComponent,
     DropDownDirective,
     ShortenPipe,
-    TodoStartComponent
+    TodoStartComponent,
+    TodoEditComponent
   ],
   imports: [
     BrowserModule,

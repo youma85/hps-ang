@@ -6,7 +6,7 @@ export class Todo {
     public status: string;
     public category: Category;
 
-    constructor(task?: string, desc?: string, status?: string, category?: Category) {
+    constructor(task?: string, desc?: string, category?: Category, status?: string) {
         this.task = task;
         this.description = desc;
         this.status = status;
