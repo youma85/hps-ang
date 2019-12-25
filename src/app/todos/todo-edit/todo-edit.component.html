@@ -2,36 +2,38 @@
     <div class="col-xs-12">
         <form (ngSubmit)="onAddItem(f)" #f="ngForm">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-4">
                     <label for="task">Task</label> 
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <input type="text" name="task" id="task" ngModel required>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-4">
                     <label for="description">Description</label> 
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <input type="text" name="description" id="description" ngModel>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-4">
                     <label for="category">Category</label> 
                     
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <select name="category" id="category"  ngModel required>
                         <option *ngFor="let cat of categories" [ngValue]="cat">{{cat.name}}</option>
                     </select>
                 </div>
             </div>    
             <div class="row">
-                <button class="btn btn-success" type="submit" [disabled]="!f.valid">Add</button>
-                <button class="btn btn-danger" type="button">Delete</button>
-                <button class="btn btn-primary" type="button">Clear</button>
+                <button class="btn btn-success" type="submit" [disabled]="!f.valid">
+                    {{ editMode? 'Update':'Add'}}
+                </button>
+                <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
+                <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
             </div>    
         </form>
     </div>

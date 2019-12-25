@@ -24,4 +24,12 @@ export class TodoService {
     addTodo(todo: Todo) {
         this.todos.push(todo);
     }
+
+    updateTodo(index: number, todo: Todo) {
+        this.todos[index] = todo;
+    }
+
+    deleteTodo(index: number) {
+        this.todos.splice(index, 1);
+    }
 }
