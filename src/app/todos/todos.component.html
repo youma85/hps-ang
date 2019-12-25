@@ -3,9 +3,6 @@
         <app-todos-list (todoWasSelected)="selectedTodo=$event"></app-todos-list>
     </div>
     <div class="col-md-7">
-        <app-todos-detail *ngIf="selectedTodo; else infoText" [todo]="selectedTodo"></app-todos-detail>
-        <ng-template #infoText>
-            Please select a Todo
-        </ng-template>
+        <router-outlet></router-outlet>
     </div>
 </div>
