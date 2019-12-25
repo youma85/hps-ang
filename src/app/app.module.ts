@@ -18,7 +18,8 @@ import { TodoStartComponent } from './todos/todo-start/todo-start.component';
 const appRoutes: Routes = [
   {path: '', redirectTo: '/todos', pathMatch: 'full' },
   {path: 'todos', component: TodosComponent, children: [
-    {path: '', component: TodoStartComponent}
+    {path: '', component: TodoStartComponent},
+    {path: ':id', component: TodosDetailComponent}
   ]},
   {path: 'categories', component: CategoriesComponent }
 ];

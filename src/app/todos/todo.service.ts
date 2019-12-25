@@ -4,7 +4,6 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class TodoService {
-
     todoSelected = new EventEmitter<Todo>();
     constructor(private categoryService: CategoryService) {}
 
@@ -16,5 +15,9 @@ export class TodoService {
 
     getTodos() {
         return this.todos;
+    }
+
+    getTodo(id: number): Todo {
+        return this.todos[id];
     }
 }
