@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo.model';
 import { Category } from 'src/app/categories/category.model';
+import { TodoService } from '../todo.service';
+import { CategoryService } from 'src/app/shared/category.service';
 
 @Component({
   selector: 'app-todos-list',
@@ -12,26 +14,17 @@ export class TodosListComponent implements OnInit {
   indCateg: number;
   @Output() todoWasSelected = new EventEmitter<Todo>();
 
-  categories: Category [] = [
-    new Category(1, 'Personal', 'Personal category'),
-    new Category(2, 'Professional', 'Professional category'),
-  ];
+  todos: Todo[] = [];
 
-  todos: Todo[] = [
-    new Todo('Learn Angular', 'Must Learn angular In 4 days', 'In Progress',this.categories[0]),
-    new Todo('Learn Spring Cloud', 'Learn the spring cloud framework', 'Not Started', this.categories[1]),
-    new Todo('Learn Java', 'Learn Java', 'Completed', this.categories[1]),
-  ];
-
-  constructor() { }
+  constructor(private todoService: TodoService,private categorySerivce: CategoryService) { }
 
   ngOnInit() {
-
+    this.todos = this.todoService.getTodos();
   }
 
   onAddTodo() {
     console.log(this.todo);
-    this.todo.category = this.categories[this.indCateg];
+    this.todo.category = this.categorySerivce.getCategories[this.indCateg];
     this.todos.push(this.todo);
     this.todo = new Todo();
   }
