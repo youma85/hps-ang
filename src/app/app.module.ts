@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { ShortenPipe } from './shared/shorten.pipe';
 import {  Routes, RouterModule } from '@angular/router';
 import { TodoStartComponent } from './todos/todo-start/todo-start.component';
 import { TodoEditComponent } from './todos/todo-edit/todo-edit.component';
+
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/todos', pathMatch: 'full' },
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

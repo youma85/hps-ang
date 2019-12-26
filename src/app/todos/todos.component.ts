@@ -6,7 +6,7 @@ import { TodoService } from './todo.service';
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
-  providers: [TodoService]
+  providers: []
 })
 export class TodosComponent implements OnInit {
 

@@ -5,6 +5,7 @@ import { Todo } from '../todo.model';
 import { TodoService } from '../todo.service';
 import { CategoryService } from 'src/app/shared/category.service';
 import { Category } from 'src/app/categories/category.model';
+import { TodoHttpService } from '../todo-http.service';
 
 @Component({
   selector: 'app-todo-edit',
@@ -20,6 +21,7 @@ export class TodoEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private todoService: TodoService,
+              private todoHttpService: TodoHttpService,
               private categoryService: CategoryService) { }
 
   ngOnInit() {

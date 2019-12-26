@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { TodoHttpService } from '../todos/todo-http.service';
 
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storageService:TodoHttpService) { }
 
   ngOnInit() {
   }
 
+  onSaveDate(){
+    this.storageService.storeTodos();
+  }
+
+  onFetchDate(){
+    this.storageService.fetchTodos();
+  }
 }

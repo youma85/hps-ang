@@ -13,7 +13,7 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a [routerLink]="['edit']">Edit Todo</a></li>
-                <li><a>Delete Todo</a></li>
+                <li><a (click)="onDeleteTodo()">Delete Todo</a></li>
             </ul>
         </div>
     </div>

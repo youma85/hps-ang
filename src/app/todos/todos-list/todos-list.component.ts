@@ -1,18 +1,19 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Todo } from '../todo.model';
-import { Category } from 'src/app/categories/category.model';
 import { TodoService } from '../todo.service';
 import { CategoryService } from 'src/app/shared/category.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-todos-list',
   templateUrl: './todos-list.component.html',
   styleUrls: ['./todos-list.component.css']
 })
-export class TodosListComponent implements OnInit {
+export class TodosListComponent implements OnInit , OnDestroy {
   todo = new Todo();
   indCateg: number;
+  subscription: Subscription;
 
   todos: Todo[] = [];
 
@@ -22,6 +23,12 @@ export class TodosListComponent implements OnInit {
               private categorySerivce: CategoryService) { }
 
   ngOnInit() {
+    this.subscription = this.todoService.todoChanged
+      .subscribe(
+        (todos: Todo[]) => {
+          this.todos = todos;
+        }
+      );
     this.todos = this.todoService.getTodos();
   }
 
@@ -34,5 +41,9 @@ export class TodosListComponent implements OnInit {
 
   onNewClicked() {
     this.router.navigate(['new'], { relativeTo: this.route});
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

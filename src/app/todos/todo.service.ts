@@ -1,20 +1,18 @@
 import { Todo } from './todo.model';
 import { CategoryService } from '../shared/category.service';
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class TodoService {
     todoSelected = new EventEmitter<Todo>();
+    todoChanged = new Subject<Todo[]>();
     constructor(private categoryService: CategoryService) {}
 
-    private todos: Todo[] = [
-        new Todo('Learn Angular', 'Must Learn angular In 4 days', this.categoryService.getCategories()[0]),
-        new Todo('Learn Spring Cloud', 'Learn the spring cloud framework', this.categoryService.getCategories()[1]),
-        new Todo('Learn Java', 'Learn Java', this.categoryService.getCategories()[1]),
-    ];
+    private todos: Todo[] = [];
 
     getTodos() {
-        return this.todos;
+        return this.todos.slice();
     }
 
     getTodo(id: number): Todo {
@@ -23,13 +21,21 @@ export class TodoService {
 
     addTodo(todo: Todo) {
         this.todos.push(todo);
+        this.todoChanged.next(this.todos.slice());
     }
 
     updateTodo(index: number, todo: Todo) {
         this.todos[index] = todo;
+        this.todoChanged.next(this.todos.slice());
     }
 
     deleteTodo(index: number) {
         this.todos.splice(index, 1);
+        this.todoChanged.next(this.todos.slice());
+    }
+
+    setTodos(todos: Todo[]) {
+        this.todos = todos;
+        this.todoChanged.next(this.todos.slice());
     }
 }

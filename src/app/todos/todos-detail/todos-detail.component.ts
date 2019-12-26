@@ -10,7 +10,7 @@ import { TodoService } from '../todo.service';
 })
 export class TodosDetailComponent implements OnInit {
 
-  todo: Todo;
+  todo: Todo = new Todo();
   id: number;
   constructor(private route: ActivatedRoute, private todoService: TodoService) { }
 
@@ -21,6 +21,10 @@ export class TodosDetailComponent implements OnInit {
         this.todo = this.todoService.getTodo(this.id);
       }
     );
+  }
+
+  onDeleteTodo(){
+    this.todoService.deleteTodo(this.id);
   }
 
 }
